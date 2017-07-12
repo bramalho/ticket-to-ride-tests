@@ -14,7 +14,7 @@ class Route
 
         $this->color = $color;
 
-        $this->validatenSegments($nSegments);
+        $this->validateNSegments($nSegments);
         $this->nSegments = $nSegments;
 
         foreach($cities as $city) {
@@ -29,7 +29,7 @@ class Route
             throw new InvalidArgumentException('Invalid number');
     }
 
-    private function validatenSegments(int $number) : void
+    private function validateNSegments(int $number) : void
     {
         if($number <= 0 || $number > 6)
             throw new InvalidArgumentException('Invalid number of segments');
