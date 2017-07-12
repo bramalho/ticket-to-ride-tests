@@ -10,19 +10,9 @@ class CityTest extends TestCase
     /** @var $city City */
     private $city;
 
-    protected function setUp() : void
+    public function testSetCity() : void
     {
-        $this->city = new City();
-    }
-
-    protected function tearDown() : void
-    {
-        unset($this->city);
-    }
-
-    public function testGetCity() : void
-    {
-        $this->city->setCity(EnumCity::VANCOUVER);
+        $this->city = new City(EnumCity::VANCOUVER);
 
         $this->assertEquals(EnumCity::VANCOUVER, $this->city->getCity());
     }
@@ -49,7 +39,7 @@ class CityTest extends TestCase
      */
     public function testSetValidCity($validCity) : void
     {
-        $this->city->setCity($validCity);
+        $this->city = new City($validCity);
 
         $this->assertEquals($validCity, $this->city->getCity());
     }
@@ -57,7 +47,6 @@ class CityTest extends TestCase
     public function invalidCityDataProvider() : array
     {
         return [
-            'special'   => ['special'],
             '99'        => [99],
             '123'       => [123]
         ];
@@ -71,6 +60,6 @@ class CityTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->city->setCity($invalidCity);
+        $this->city = new City($invalidCity);
     }
 }
