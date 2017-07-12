@@ -61,7 +61,7 @@ class SpecialColorTest extends TestCase
     public function allColorsDataProvider() : array
     {
         return [
-            'sepecial'  => [EnumColors::SPECIAL],
+            'special'   => [EnumColors::SPECIAL],
             'purple'    => [EnumColors::PURPLE],
             'white'     => [EnumColors::WHITE],
             'blue'      => [EnumColors::BLUE],
