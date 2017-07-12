@@ -30,14 +30,14 @@ class GenericColorTest extends TestCase
     public function validColorDataProvider() : array
     {
         return [
-            [EnumColors::PURPLE],
-            [EnumColors::WHITE],
-            [EnumColors::BLUE],
-            [EnumColors::YELLOW],
-            [EnumColors::ORANGE],
-            [EnumColors::BLACK],
-            [EnumColors::RED],
-            [EnumColors::GREEN]
+            'purple'    => [EnumColors::PURPLE],
+            'white'     => [EnumColors::WHITE],
+            'blue'      => [EnumColors::BLUE],
+            'yellow'    => [EnumColors::YELLOW],
+            'orange'    => [EnumColors::ORANGE],
+            'black'     => [EnumColors::BLACK],
+            'red'       => [EnumColors::RED],
+            'green'     => [EnumColors::GREEN]
         ];
     }
 
