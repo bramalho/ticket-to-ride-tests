@@ -1,12 +1,43 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: ritacatarino
- * Date: 12/07/2017
- * Time: 10:38
- */
 class Route
 {
+    private $id;
+    private $color;
+    private $nSegments;
+    private $cities = []; // array of 2 cities
 
+    public function __construct(int $id, AbstractColor $color, int $nSegments, array $cities)
+    {
+        $this->validatePositiveInteger($id);
+        $this->id = $id;
+
+        $this->color = $color;
+
+        $this->validatenSegments($nSegments);
+        $this->nSegments = $nSegments;
+
+        foreach($cities as $city) {
+            $this->validateCity($city);
+            $this->cities[] = $city;
+        }
+    }
+
+    private function validatePositiveInteger(int $number) : void
+    {
+        if($number <= 0)
+            throw new InvalidArgumentException('Invalid number');
+    }
+
+    private function validatenSegments(int $number) : void
+    {
+        if($number <= 0 || $number > 6)
+            throw new InvalidArgumentException('Invalid number of segments');
+    }
+
+    private function validateCity($city) : void
+    {
+        if(!($city instanceof City))
+            throw new InvalidArgumentException('Invalid City');
+    }
 }
