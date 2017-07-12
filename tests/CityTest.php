@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CityTest extends TestCase
 {
-    /** @var  City */
+    /** @var $city City */
     private $city;
 
     protected function setUp() : void
