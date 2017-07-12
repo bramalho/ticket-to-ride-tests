@@ -1,8 +1,8 @@
 <?php
 
-class EnumTrainCarColors extends AbstractEnum
+class EnumColors extends AbstractEnum
 {
-    const WILD      = 0;
+    const SPECIAL   = 0;
     const PURPLE    = 1;
     const WHITE     = 2;
     const BLUE      = 3;

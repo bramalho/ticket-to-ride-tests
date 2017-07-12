@@ -3,36 +3,41 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers TrainCarColor
+ * @covers GenericColor
  */
-class TrainCarColorTest extends TestCase
+class GenericColorTest extends TestCase
 {
-    /** @var  TrainCarColor */
-    private $trainCarColor;
+    /** @var  GenericColor */
+    private $genericColor;
 
     protected function setUp() : void
     {
-        $this->trainCarColor = new TrainCarColor();
+        $this->genericColor = new GenericColor();
     }
 
     protected function tearDown() : void
     {
-        unset($this->trainCarColor);
+        unset($this->genericColor);
     }
 
     public function testGetColor() : void
     {
-        $this->trainCarColor->setColor(EnumTrainCarColors::RED);
+        $this->genericColor->setColor(EnumColors::RED);
 
-        $this->assertEquals(EnumTrainCarColors::RED, $this->trainCarColor->getColor());
+        $this->assertEquals(EnumColors::RED, $this->genericColor->getColor());
     }
 
     public function validColorDataProvider() : array
     {
         return [
-            'green'     => [EnumTrainCarColors::GREEN],
-            'yellow'    => [EnumTrainCarColors::YELLOW],
-            'red'       => [EnumTrainCarColors::RED]
+            [EnumColors::PURPLE],
+            [EnumColors::WHITE],
+            [EnumColors::BLUE],
+            [EnumColors::YELLOW],
+            [EnumColors::ORANGE],
+            [EnumColors::BLACK],
+            [EnumColors::RED],
+            [EnumColors::GREEN]
         ];
     }
 
@@ -40,18 +45,17 @@ class TrainCarColorTest extends TestCase
      * @param $validColor
      * @dataProvider validColorDataProvider
      */
-
     public function testSetValidColor($validColor) : void
     {
-        $this->trainCarColor->setColor($validColor);
+        $this->genericColor->setColor($validColor);
 
-        $this->assertEquals($validColor, $this->trainCarColor->getColor());
+        $this->assertEquals($validColor, $this->genericColor->getColor());
     }
 
     public function invalidColorDataProvider() : array
     {
         return [
-            'wild'      => [EnumTrainCarColors::WILD],
+            'special'   => [EnumColors::SPECIAL],
             '99'        => [99],
             '123'       => [123]
         ];
@@ -65,20 +69,20 @@ class TrainCarColorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->trainCarColor->setColor($invalidColor);
+        $this->genericColor->setColor($invalidColor);
     }
 
     public function testIsThisColorTrue() : void
     {
-        $this->trainCarColor->setColor(EnumTrainCarColors::RED);
+        $this->genericColor->setColor(EnumColors::RED);
 
-        $this->assertTrue($this->trainCarColor->isThisColor(EnumTrainCarColors::RED));
+        $this->assertTrue($this->genericColor->isThisColor(EnumColors::RED));
     }
 
     public function testIsThisColorFalse() : void
     {
-        $this->trainCarColor->setColor(EnumTrainCarColors::RED);
+        $this->genericColor->setColor(EnumColors::RED);
 
-        $this->assertFalse($this->trainCarColor->isThisColor(EnumTrainCarColors::WILD));
+        $this->assertFalse($this->genericColor->isThisColor(EnumColors::SPECIAL));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class TrainCarColor extends AbstractColor
+class GenericColor extends AbstractColor
 {
     private $color;
 
@@ -11,8 +11,8 @@ class TrainCarColor extends AbstractColor
 
     public function setColor(int $color) : void
     {
-        if (!in_array($color, EnumTrainCarColors::getConstants()) || $color === EnumTrainCarColors::WILD) {
-            throw new InvalidArgumentException('No valid Color for Train Car Color');
+        if (!in_array($color, EnumColors::getConstants()) || $color === EnumColors::SPECIAL) {
+            throw new InvalidArgumentException('No valid Color');
         }
 
         $this->color = $color;
