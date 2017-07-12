@@ -7,6 +7,14 @@ class RouteTest extends TestCase
     /** @var $route Route */
     private $route;
 
+    public function validRouteDataProvider()
+    {
+        return
+            [
+                [1, new GenericColor(EnumColors::PURPLE), 2, [new City(EnumCity::VANCOUVER), new City(EnumCity::ATLANTA)]]
+            ];
+    }
+
     public function allPointsDataProvider() : array
     {
         return [
@@ -27,18 +35,10 @@ class RouteTest extends TestCase
     public function testCalculatePoints($nSegments, $points) : void
     {
         $this->route = new Route(
-            1, new GenericColor(), $nSegments,
+            1, new GenericColor(EnumColors::YELLOW), $nSegments,
             [new City(EnumCity::VANCOUVER), new City(EnumCity::SEATTLE)]
         );
 
         $this->assertEquals($points, $this->route->calculatePoint());
-    }
-
-    public function validRouteDataProvider()
-    {
-        return
-            [
-                [1, new GenericColor(EnumColors::PURPLE), 2, [new City(EnumCity::VANCOUVER), new City(EnumCity::ATLANTA)]]
-            ];
     }
 }
