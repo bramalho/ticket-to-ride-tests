@@ -28,7 +28,10 @@ class RouteTest extends TestCase
      */
     public function testCalculatePoints($nSegments, $points) : void
     {
-        $this->route = new Route(1, new GenericColor(), $nSegments, [new City(), new City()]);
+        $this->route = new Route(
+            1, new GenericColor(), $nSegments,
+            [new City(EnumCity::VANCOUVER), new City(EnumCity::SEATTLE)]
+        );
 
         $this->assertEquals($points, $this->route->calculatePoint());
     }

@@ -4,6 +4,13 @@ class City
 {
     private $city;
 
+    public function __construct(int $city = null)
+    {
+        if ($city !== null) {
+            $this->setCity($city);
+        }
+    }
+
     public function getCity()
     {
         return $this->city;
