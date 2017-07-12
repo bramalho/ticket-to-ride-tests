@@ -40,4 +40,5 @@ class Route
         if(!($city instanceof City))
             throw new InvalidArgumentException('Invalid City');
     }
+    
 }
