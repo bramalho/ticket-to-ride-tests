@@ -25,6 +25,38 @@ class Route
         }
     }
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return AbstractColor
+     */
+    public function getColor(): AbstractColor
+    {
+        return $this->color;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNSegments(): int
+    {
+        return $this->nSegments;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCities(): array
+    {
+        return $this->cities;
+    }
+
     private function validatePositiveInteger(int $number) : void
     {
         if($number <= 0)
@@ -45,7 +77,7 @@ class Route
 
     private function validateTwoCities(array $cities)
     {
-        if($cities[0] == $cities[1])
+        if($cities[0] == $cities[1] || count($cities) !== 2)
         {
             throw new InvalidArgumentException('Invalid set of cities');
         }
