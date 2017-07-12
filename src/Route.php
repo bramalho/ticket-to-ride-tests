@@ -82,21 +82,4 @@ class Route
             throw new InvalidArgumentException('Invalid set of cities');
         }
     }
-
-    public function calculatePoint() : int
-    {
-        switch ($this->nSegments) {
-            case 1:
-            case 2:
-                return $this->nSegments;
-            case 3:
-                return 4;
-            case 4:
-                return 7;
-            case 5:
-                return 10;
-            case 6:
-                return 15;
-        }
-    }
 }
