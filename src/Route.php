@@ -17,6 +17,8 @@ class Route
         $this->validateNSegments($nSegments);
         $this->nSegments = $nSegments;
 
+        $this->validateTwoCities($cities);
+
         foreach($cities as $city) {
             $this->validateCity($city);
             $this->cities[] = $city;
@@ -39,6 +41,14 @@ class Route
     {
         if(!($city instanceof City))
             throw new InvalidArgumentException('Invalid City');
+    }
+
+    private function validateTwoCities(array $cities)
+    {
+        if($cities[0] == $cities[1])
+        {
+            throw new InvalidArgumentException('Invalid set of cities');
+        }
     }
 
     public function calculatePoint() : int
