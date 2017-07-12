@@ -48,7 +48,11 @@ class RouteTest extends TestCase
             $cities
         );
 
+        $this->assertEquals($id, $this->route->getId());
         $this->assertInstanceOf(AbstractColor::class, $this->route->getColor());
+        $this->assertEquals($color, $this->route->getColor());
+        $this->assertEquals($nSegments, $this->route->getNSegments());
+        $this->assertEquals($cities, $this->route->getCities());
 
         foreach($this->route->getCities() as $city)
         {
@@ -64,7 +68,8 @@ class RouteTest extends TestCase
                 [2, new SpecialColor(EnumColors::SPECIAL), 2, [new City(EnumCity::BOSTON), new City(EnumCity::BOSTON)]],
                 [3, new GenericColor(EnumColors::RED), 50, [new City(EnumCity::DALLAS), new City(EnumCity::ELPASO)]],
                 [0, new GenericColor(EnumColors::RED), 5, [new City(EnumCity::MONTREAL), new City(EnumCity::SAULTSTMARIE)]],
-                [4, new GenericColor(EnumColors::RED), 5, [new City(EnumCity::MONTREAL), new City(EnumCity::SAULTSTMARIE), new City(EnumCity::KANSASCITY)]]
+                [4, new GenericColor(EnumColors::RED), 5, [new City(EnumCity::MONTREAL), new City(EnumCity::SAULTSTMARIE), new City(EnumCity::KANSASCITY)]],
+                [5, new GenericColor(EnumColors::RED), 5, ['invalid city 1', 'invalid city 2']]
             ];
     }
 
