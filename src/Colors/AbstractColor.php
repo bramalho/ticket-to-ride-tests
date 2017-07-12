@@ -2,7 +2,7 @@
 
 abstract class AbstractColor
 {
-    private $color;
+    protected $color;
 
     public function getColor() : int
     {

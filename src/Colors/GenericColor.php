@@ -2,13 +2,6 @@
 
 class GenericColor extends AbstractColor
 {
-    private $color;
-
-    public function getColor() : int
-    {
-        return $this->color;
-    }
-
     public function setColor(int $color) : void
     {
         if (!in_array($color, EnumColors::getConstants()) || $color === EnumColors::SPECIAL) {
