@@ -19,4 +19,9 @@ class TrainCarTest extends TestCase
     {
         unset($this->trainCar);
     }
+
+    public function testSetValidColor() : void
+    {
+        $this->assertTrue(true);
+    }
 }
