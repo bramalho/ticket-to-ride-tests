@@ -2,7 +2,7 @@
 
 class GenericColor extends AbstractColor
 {
-    public function setColor(int $color) : void
+    public function __construct(int $color = null)
     {
         if (!in_array($color, EnumColors::getConstants()) || $color === EnumColors::SPECIAL) {
             throw new InvalidArgumentException('No valid Color');

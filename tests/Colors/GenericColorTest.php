@@ -10,19 +10,9 @@ class GenericColorTest extends TestCase
     /** @var  GenericColor */
     private $genericColor;
 
-    protected function setUp() : void
-    {
-        $this->genericColor = new GenericColor();
-    }
-
-    protected function tearDown() : void
-    {
-        unset($this->genericColor);
-    }
-
     public function testGetColor() : void
     {
-        $this->genericColor->setColor(EnumColors::RED);
+        $this->genericColor = new GenericColor(EnumColors::RED);
 
         $this->assertEquals(EnumColors::RED, $this->genericColor->getColor());
     }
@@ -47,7 +37,7 @@ class GenericColorTest extends TestCase
      */
     public function testSetValidColor($validColor) : void
     {
-        $this->genericColor->setColor($validColor);
+        $this->genericColor = new GenericColor($validColor);
 
         $this->assertEquals($validColor, $this->genericColor->getColor());
     }
@@ -69,19 +59,19 @@ class GenericColorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->genericColor->setColor($invalidColor);
+        $this->genericColor = new GenericColor($invalidColor);
     }
 
     public function testIsThisColorTrue() : void
     {
-        $this->genericColor->setColor(EnumColors::RED);
+        $this->genericColor = new GenericColor(EnumColors::RED);
 
         $this->assertTrue($this->genericColor->isThisColor(EnumColors::RED));
     }
 
     public function testIsThisColorFalse() : void
     {
-        $this->genericColor->setColor(EnumColors::RED);
+        $this->genericColor = new GenericColor(EnumColors::RED);
 
         $this->assertFalse($this->genericColor->isThisColor(EnumColors::SPECIAL));
     }

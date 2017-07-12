@@ -10,26 +10,16 @@ class SpecialColorTest extends TestCase
     /** @var  SpecialColor */
     private $specialColor;
 
-    protected function setUp() : void
-    {
-        $this->specialColor = new SpecialColor();
-    }
-
-    protected function tearDown() : void
-    {
-        unset($this->specialColor);
-    }
-
     public function testGetColor() : void
     {
-        $this->specialColor->setColor(EnumColors::SPECIAL);
+        $this->specialColor = new SpecialColor(EnumColors::SPECIAL);
 
         $this->assertEquals(EnumColors::SPECIAL, $this->specialColor->getColor());
     }
 
     public function testSetValidColor() : void
     {
-        $this->specialColor->setColor(EnumColors::SPECIAL);
+        $this->specialColor = new SpecialColor(EnumColors::SPECIAL);
 
         $this->assertEquals(EnumColors::SPECIAL, $this->specialColor->getColor());
     }
@@ -58,12 +48,12 @@ class SpecialColorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->specialColor->setColor($invalidColor);
+        $this->specialColor = new SpecialColor($invalidColor);
     }
 
     public function testIsThisColorTrue() : void
     {
-        $this->specialColor->setColor(EnumColors::SPECIAL);
+        $this->specialColor = new SpecialColor(EnumColors::SPECIAL);
 
         $this->assertTrue($this->specialColor->isThisColor(EnumColors::SPECIAL));
     }
@@ -89,14 +79,14 @@ class SpecialColorTest extends TestCase
      */
     public function testIsThisAnyColorTrue($color) : void
     {
-        $this->specialColor->setColor(EnumColors::SPECIAL);
+        $this->specialColor = new SpecialColor(EnumColors::SPECIAL);
 
         $this->assertTrue($this->specialColor->isThisColor($color));
     }
 
     public function testIsThisColorFalse() : void
     {
-        $this->specialColor->setColor(EnumColors::SPECIAL);
+        $this->specialColor = new SpecialColor(EnumColors::SPECIAL);
 
         $this->assertFalse($this->specialColor->isThisColor(99));
     }

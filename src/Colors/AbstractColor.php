@@ -7,7 +7,7 @@ abstract class AbstractColor
     public function __construct(int $color = null)
     {
         if ($color !== null) {
-            $this->setColor($color);
+            $this->color = $color;
         }
     }
 
@@ -15,8 +15,6 @@ abstract class AbstractColor
     {
         return $this->color;
     }
-
-    public function setColor(int $color) : void {}
 
     public function isThisColor(int $color) : bool {}
 }

@@ -2,7 +2,7 @@
 
 class SpecialColor extends AbstractColor
 {
-    public function setColor(int $color) : void
+    public function __construct(int $color = null)
     {
         if ($color !== EnumColors::SPECIAL) {
             throw new InvalidArgumentException('No valid Color');
