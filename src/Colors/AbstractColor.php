@@ -4,6 +4,13 @@ abstract class AbstractColor
 {
     protected $color;
 
+    public function __construct(int $color = null)
+    {
+        if ($color !== null) {
+            $this->setColor($color);
+        }
+    }
+
     public function getColor() : int
     {
         return $this->color;

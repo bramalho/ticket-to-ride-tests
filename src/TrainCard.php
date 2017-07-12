@@ -1,12 +1,17 @@
 <?php
 
-class TrainCar
+class TrainCard
 {
     /** @var  AbstractColor */
     private $color;
 
-    public function setColor(AbstractColor $color)
+    public function __construct(AbstractColor $color)
     {
         $this->color = $color;
+    }
+
+    public function getColor() : AbstractColor
+    {
+        return $this->color;
     }
 }

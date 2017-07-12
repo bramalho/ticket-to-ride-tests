@@ -3,25 +3,41 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers TrainCar
+ * @covers TrainCard
  */
-class TrainCarTest extends TestCase
+class TrainCardTest extends TestCase
 {
-    /** @var  TrainCar */
-    private $trainCar;
+    /** @var  TrainCard */
+    private $trainCard;
 
-    protected function setUp() : void
+    public function testGetColor() : void
     {
-        $this->trainCar = new TrainCar();
+        $this->trainCard = new TrainCard(new GenericColor(EnumColors::RED));
+        $this->assertInstanceOf(AbstractColor::class, $this->trainCard->getColor());
     }
 
-    protected function tearDown() : void
+    public function validColorDataProvider() : array
     {
-        unset($this->trainCar);
+        return [
+            'special'   => [new SpecialColor(EnumColors::SPECIAL)],
+            'purple'    => [new GenericColor(EnumColors::PURPLE)],
+            'white'     => [new GenericColor(EnumColors::WHITE)],
+            'blue'      => [new GenericColor(EnumColors::BLUE)],
+            'yellow'    => [new GenericColor(EnumColors::YELLOW)],
+            'orange'    => [new GenericColor(EnumColors::ORANGE)],
+            'black'     => [new GenericColor(EnumColors::BLACK)],
+            'red'       => [new GenericColor(EnumColors::RED)],
+            'green'     => [new GenericColor(EnumColors::GREEN)]
+        ];
     }
 
-    public function testSetValidColor() : void
+    /**
+     * @param $color
+     * @dataProvider validColorDataProvider
+     */
+    public function testSetValidColor($color) : void
     {
-        $this->assertTrue(true);
+        $this->trainCard = new TrainCard($color);
+        $this->assertEquals($color, $this->trainCard->getColor());
     }
 }
