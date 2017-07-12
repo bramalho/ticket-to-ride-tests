@@ -35,33 +35,22 @@ class TrainCardCollectionTest extends TestCase
 
     public function testGetNumberOfCardsOfAGenericColor() : void
     {
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
+        $this->addCardsToCollection();
 
         $this->assertEquals(5, $this->trainCardCollection->getNumberOfCardsOfAColor(EnumColors::RED));
     }
 
     public function testGetNumberOfCardsWithASpecialColor() : void
     {
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
+        $this->addCardsToCollection();
         $this->trainCardCollection->addCard(new TrainCard(new SpecialColor(EnumColors::SPECIAL)));
 
-        $this->assertEquals(5, $this->trainCardCollection->getNumberOfCardsOfAColor(EnumColors::RED));
+        $this->assertEquals(6, $this->trainCardCollection->getNumberOfCardsOfAColor(EnumColors::RED));
     }
 
     public function testPlayOneCardOfAColor() : void
     {
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->addCard(new TrainCard(new SpecialColor(EnumColors::SPECIAL)));
+        $this->addCardsToCollection();
 
         $this->trainCardCollection->playNCardOfAColor(2, EnumColors::RED);
 
@@ -74,7 +63,17 @@ class TrainCardCollectionTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
+        $this->addCardsToCollection();
+        $this->trainCardCollection->playNCardOfAColor(9, EnumColors::RED);
+    }
+
+    private function addCardsToCollection() : void
+    {
         $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
-        $this->trainCardCollection->playNCardOfAColor(2, EnumColors::RED);
+        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
+        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
+        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
+        $this->trainCardCollection->addCard(new TrainCard(new GenericColor(EnumColors::RED)));
+
     }
 }
