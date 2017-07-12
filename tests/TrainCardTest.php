@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
  */
 class TrainCardTest extends TestCase
 {
-    /** @var  TrainCard */
+    /** @var $trainCard TrainCard */
     private $trainCard;
 
     public function testGetColor() : void
