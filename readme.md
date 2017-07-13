@@ -2,7 +2,7 @@
 Ticket To Ride Tests with Sebastian Bergmann
 
 #### Install:
-1. `composer upadate`
+1. `composer update`
 
 #### Run:
 1. `phpunit --colors` or `phpunit --testdox`
